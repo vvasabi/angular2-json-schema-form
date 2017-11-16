@@ -300,6 +300,10 @@ export class JsonSchemaFormComponent implements ControlValueAccessor, OnChanges,
       this.activateForm();        // Update dataMap, templateRefLibrary,
                                   // formGroupTemplate, formGroup
 
+      if (this.jsf.formGroup) {
+        this.jsf.formGroup.statusChanges.subscribe(() => this.changeDetector.markForCheck());
+      }
+
       // Uncomment individual lines to output debugging information to console:
       // (These always work.)
       // console.log('loading form...');
